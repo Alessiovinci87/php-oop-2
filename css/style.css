@@ -1,0 +1,31 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+}
+
+.product-container{
+    width: 400px;
+    text-align: center;
+    background-color: rgb(250, 166, 64);
+    margin-right: 10px;
+}
+
+.product-title{
+    color: red;
+    font-size: 20px;
+}
+
+.product-price{
+    color: green;
+}
+
+img{
+    width: 350px;
+    height: 350px;
+    margin-top: 10px;
+}
