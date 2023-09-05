@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/Sconto.php"; 
+require_once __DIR__ . "/InvalidPriceException.php"; 
 
 class Product {
     use Sconto;
@@ -11,14 +12,20 @@ class Product {
     public $image;
 
     public function __construct(string $title, string $description, $price, $image, Category $_type) {
-        $this->title = $title;
-        $this->description = $description;
-        $this->price = $price;
-        $this->type = $_type;
-        $this->image = $image;
+        try {
+       
+            if ($price <= 0) {
+                throw new InvalidPriceException("Il prezzo del prodotto non può essere negativo o zero.");
+            }
+
+            $this->title = $title;
+            $this->description = $description;
+            $this->price = $price;
+            $this->type = $_type;
+            $this->image = $image;
+        } catch (InvalidPriceException $e) {
+
+            echo "Errore: " . $e->getMessage();
+        }
     }
-
 }
-
-
-?>
